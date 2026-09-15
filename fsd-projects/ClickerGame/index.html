@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Clicker</title>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #button {
+            border-radius: 50%;
+            margin-top: 10px;
+            margin-bottom: 100px;
+            margin-right: 400px;
+            margin-left: 620px;
+        }
+
+        #score {
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 30px;
+            color: lawngreen
+        }
+
+        #name {
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 50px;
+            color: lawngreen
+        }
+
+        #upgrade {
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: lawngreen
+        }
+
+        #autoclicker {
+            text-align: center;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            color: lawngreen
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="name">CRUELTY CLICKER</h1>
+    <p id="score">SCORE = 0</p>
+    <p id="upgrade">PURCHASE UPGRADE</p>
+    <p id="autoclicker">PURCHASE AUTOCLICKER</p>
+    <img id="button" src="https://www.michigandaily.com/wp-content/uploads/2023/05/IMG_7778-1.jpg" width="550"
+        height="450">
+</body>
+
+</html>
+<script>
+    let score = 0
+    let clickpower = 1
+    let autoclickers = 0
+    function addscore() {
+        score = score + clickpower
+        document.getElementById("score").innerText = "SCORE  =  " + score
+    }
+    function upgradeButton() {
+        if (score >= 15) {
+            clickpower = clickpower + 1
+            score = score - 15
+            document.getElementById("score").innerText = "SCORE  =  " + score
+        }
+    }
+    function autoClick() {
+        if (score >= 25) {
+            score = score - 25
+            autoclickers = autoclickers + 1
+            document.getElementById("score").innerText = "SCORE  =  " + score
+        }
+    }
+    setInterval(automaticallyClick, 1000);
+    function automaticallyClick() {
+        score = score + autoclickers
+        document.getElementById("score").innerText = "SCORE  =  " + score
+    }
+
+
+    document.getElementById("button").addEventListener("click", addscore)
+    document.getElementById("upgrade").addEventListener("click", upgradeButton)
+    document.getElementById("autoclicker").addEventListener("click", autoClick)
+</script>
